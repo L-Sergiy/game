@@ -6,7 +6,7 @@ const step = 20;
 let score = 0;
 
 const box = document.createElement('img');
-box.src = '/game/box.png';
+box.src = 'box.png';
 box.classList.add('absolute');
 box.style.width = '150px';
 box.style.height = '150px';
@@ -38,7 +38,7 @@ function isCollision(box, fruit) {
 
 function createFruit() {
   const fruit = document.createElement('img');
-  fruit.src = '/game/apple.png';
+  fruit.src = 'apple.png';
   fruit.classList.add('absolute');
   fruit.style.width = '100px';
   fruit.style.height = '100px';
