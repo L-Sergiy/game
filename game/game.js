@@ -5,7 +5,6 @@ let position = 0;
 const step = 20;
 let score = 0;
 
-// створюємо коробку
 const box = document.createElement('img');
 box.src = '/game/box.png';
 box.classList.add('absolute');
@@ -15,7 +14,6 @@ box.style.bottom = '0px';
 box.style.left = '0px';
 container.appendChild(box);
 
-// рух коробки
 document.addEventListener('keydown', (e) => {
   if (['a','A','ф','Ф','ArrowLeft'].includes(e.key)) {
     position = Math.max(0, position - step);
@@ -27,7 +25,6 @@ document.addEventListener('keydown', (e) => {
   box.style.left = position + 'px';
 });
 
-// перевірка зіткнення
 function isCollision(box, fruit) {
   const boxRect = box.getBoundingClientRect();
   const fruitRect = fruit.getBoundingClientRect();
@@ -39,7 +36,6 @@ function isCollision(box, fruit) {
   );
 }
 
-// створення фруктів
 function createFruit() {
   const fruit = document.createElement('img');
   fruit.src = '/game/apple.png';
@@ -71,5 +67,4 @@ function createFruit() {
   fall();
 }
 
-// створюємо фрукт кожні 3 секунди
 setInterval(createFruit, 3000);
