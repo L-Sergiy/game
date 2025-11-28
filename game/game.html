@@ -6,22 +6,29 @@
 <title>Catch the Fruit</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-  body, html {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-  .bg-img {
-    background-image: url("sky.png");
-  }
+  body, html { margin: 0; padding: 0; overflow: hidden; }
+  .bg-img { background-image: url("sky.png"); }
+  .heart { background: url("heart.png") center/contain no-repeat; }
 </style>
 </head>
 <body class="bg-img">
 
   <header class="h-16 bg-blue-300 w-full flex items-center px-4 shadow-xl">
-    <p class="text-4xl text-white">Record: 0</p>
-    <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-xl text-2xl w-32 absolute top-0 right-0 m-2"><a href="/index.html">Вийти</a></button>
+    <p id="score" class="text-4xl text-white">Score: 0</p>
+    <div class="heart w-16 h-16 z-10 mx-4"></div>
+    <div class="heart w-16 h-16 z-10 mx-4"></div>
+    <div class="heart w-16 h-16 z-10 mx-4"></div>
+    <button id="pauseBtn" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-8 rounded-xl text-2xl absolute top-0 right-40 m-2">Пауза</button>
+    <a href="../index.html" id="exitBtn" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-xl text-2xl w-32 absolute top-0 right-0 m-2 text-center flex items-center justify-center no-underline">Вийти</a>
   </header>
+
+  <dialog id="pauseMenu" class="backdrop:bg-black backdrop:bg-opacity-70 p-0 rounded-3xl">
+    <div class="bg-white p-10 rounded-3xl text-center w-full">
+      <h1 id="pauseTitle" class="text-6xl font-bold mb-4">ПАУЗА</h1>
+      <button id="resumeBtn" class="bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-xl text-3xl m-3">Продовжити</button>
+      <a href="../index.html" id="homeLink" class="block bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-4 px-8 rounded-xl text-3xl m-3 no-underline text-center">На головну</a>
+    </div>
+  </dialog>
 
   <div id="relative" class="relative w-full h-screen"></div>
   <script src="game.js"></script>

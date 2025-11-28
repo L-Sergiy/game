@@ -6,22 +6,43 @@
   <title>Document</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    .bg-img {
-      background-image: url("game/sky.png");
-    }
+    .bg-img { background-image: url("game/sky.png"); }
   </style>
 </head>
 <body class="bg-img w-full h-full object-cover">
-  <div>
-    <h1 class="flex justify-center my-[150px] text-6xl">Гра "Спіймай яблука"</h1>
-    <div class="flex justify-center flex-col space-y-4 items-center">
-      <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-xl text-4xl w-72">
-        <a href="game/game.html">Почати гру</a>
-      </button>
-      <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-xl text-4xl w-72">
-        Правила гри
-      </button>
+  <h1 id="title" class="flex justify-center my-[150px] text-6xl">Гра "Спіймай яблука"</h1>
+  <div class="flex justify-center flex-col space-y-4 items-center">
+    <a href="game/game.html" id="startBtn" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-xl text-4xl w-72 text-center no-underline">Почати гру</a>
+    <button id="openRulesModal" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-xl text-4xl w-72" id="rulesBtn">Правила гри</button>
+    <button id="openLangModal" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl text-4xl w-72" id="langBtn">Мови</button>
+
+    <dialog id="rulesModal" class="bg-white p-10 rounded-3xl text-left max-w-2xl shadow-2xl">
+      <h2 id="rulesTitle" class="text-4xl font-bold mb-6 text-center">Правила гри:</h2>
+      <ul id="rulesList" class="text-xl space-y-4 mb-6">
+        <li><strong>🎯 Мета:</strong> Спіймай якомога більше яблук, щоб набрати найвищий рахунок!</li>
+        <li><strong>⌨️ Керування:</strong> Використовуй клавіші <code class="bg-gray-200 px-2 py-1 rounded">A</code> та <code class="bg-gray-200 px-2 py-1 rounded">D</code> (або стрілки <code class="bg-gray-200 px-2 py-1 rounded">←</code> <code class="bg-gray-200 px-2 py-1 rounded">→</code>) для руху коробочки</li>
+        <li><strong>🍎 Яблука:</strong> Яблука падають з неба - постарайся їх спіймати!</li>
+        <li><strong>❤️ Життя:</strong> На початку у тебе 3 сердечка (життя). За кожне пропущене яблучко ти втрачаєш одне сердечко</li>
+        <li><strong>💔 Гра закінчується:</strong> Коли всі 3 сердечка будуть втрачені, гра завершується</li>
+        <li><strong>⏸️ Пауза:</strong> Натисни кнопку "Пауза" щоб зупинити гру у будь-який момент</li>
+        <li><strong>📊 Рахунок:</strong> За кожне спіймане яблучко +1 до рахунку!</li>
+      </ul>
+      <button id="closeRulesModal" class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-xl text-3xl">Розумію!</button>
+    </dialog>
+
+    <dialog id="langModal" class="bg-white p-10 rounded-3xl text-center max-w-2xl shadow-2xl">
+      <h2 id="langTitle" class="text-4xl font-bold mb-6">Виберіть мову:</h2>
+      <div class="flex flex-wrap gap-4 justify-center mb-6">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl text-2xl" onclick="setLanguage('uk')" aria-label="Ukrainian">🇺🇦 Українська</button>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl text-2xl" onclick="setLanguage('en')" aria-label="English">🇬🇧 English</button>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl text-2xl" onclick="setLanguage('de')" aria-label="German">🇩🇪 Deutsch</button>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl text-2xl" onclick="setLanguage('es')" aria-label="Spanish">🇪🇸 Español</button>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl text-2xl" onclick="setLanguage('pl')" aria-label="Polish">🇵🇱 Polski</button>
+      </div>
+      <button id="closeLangModal" class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-xl text-3xl">Закрити</button>
+    </dialog>
     </div>
-  </div>
+
+  <script src="./script.js"></script>
 </body>
 </html>
