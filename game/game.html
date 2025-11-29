@@ -1,36 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catch the Fruit</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="true">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Спіймай яблука</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-  body, html { margin: 0; padding: 0; overflow: hidden; }
+  html, body { 
+    margin: 0; 
+    padding: 0; 
+    width: 100%; 
+    height: 100%;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+  #relative { overflow: hidden; }
   .bg-img { background-image: url("sky.png"); }
   .heart { background: url("heart.png") center/contain no-repeat; }
+  @media (max-height: 600px) { header { height: 50px !important; } }
 </style>
 </head>
-<body class="bg-img">
+<body class="bg-img flex flex-col w-full h-screen">
 
-  <header class="h-16 bg-blue-300 w-full flex items-center px-4 shadow-xl">
-    <p id="score" class="text-4xl text-white">Score: 0</p>
-    <div class="heart w-16 h-16 z-10 mx-4"></div>
-    <div class="heart w-16 h-16 z-10 mx-4"></div>
-    <div class="heart w-16 h-16 z-10 mx-4"></div>
-    <button id="pauseBtn" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-8 rounded-xl text-2xl absolute top-0 right-40 m-2">Пауза</button>
-    <a href="../index.html" id="exitBtn" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-xl text-2xl w-32 absolute top-0 right-0 m-2 text-center flex items-center justify-center no-underline">Вийти</a>
+  <header class="h-14 sm:h-16 bg-blue-300 w-full flex items-center px-2 sm:px-4 shadow-xl gap-2 sm:gap-4">
+    <p id="score" class="text-lg sm:text-2xl md:text-4xl text-white font-bold">Score: 0</p>
+    <div class="heart w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 z-10"></div>
+    <div class="heart w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 z-10"></div>
+    <div class="heart w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 z-10"></div>
+    <button id="pauseBtn" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 sm:py-2 sm:px-6 md:py-2 md:px-8 rounded-lg sm:rounded-xl text-xs sm:text-lg md:text-2xl ml-auto">Пауза</button>
+    <a href="../index.html" id="exitBtn" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 sm:py-2 sm:px-4 md:py-2 md:px-4 rounded-lg sm:rounded-xl text-xs sm:text-lg md:text-2xl text-center flex items-center justify-center no-underline">Вийти</a>
   </header>
 
-  <dialog id="pauseMenu" class="backdrop:bg-black backdrop:bg-opacity-70 p-0 rounded-3xl">
-    <div class="bg-white p-10 rounded-3xl text-center w-full">
-      <h1 id="pauseTitle" class="text-6xl font-bold mb-4">ПАУЗА</h1>
-      <button id="resumeBtn" class="bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-xl text-3xl m-3">Продовжити</button>
-      <a href="../index.html" id="homeLink" class="block bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-4 px-8 rounded-xl text-3xl m-3 no-underline text-center">На головну</a>
+  <dialog id="pauseMenu" class="backdrop:bg-black backdrop:bg-opacity-70 p-0 rounded-2xl sm:rounded-3xl w-11/12 sm:w-auto">
+    <div class="bg-white p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl text-center">
+      <h1 id="pauseTitle" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">ПАУЗА</h1>
+      <button id="resumeBtn" class="block w-full sm:w-auto bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 md:py-4 md:px-8 rounded-lg sm:rounded-xl text-lg sm:text-2xl md:text-3xl m-2">Продовжити</button>
+      <a href="../index.html" id="homeLink" class="block w-full sm:w-auto bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 md:py-4 md:px-8 rounded-lg sm:rounded-xl text-lg sm:text-2xl md:text-3xl m-2 no-underline text-center">На головну</a>
     </div>
   </dialog>
 
-  <div id="relative" class="relative w-full h-screen"></div>
+  <div id="relative" class="relative w-full flex-1"></div>
+
   <script src="game.js"></script>
 </body>
 </html>
