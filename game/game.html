@@ -16,11 +16,22 @@
     -webkit-user-select: none;
     user-select: none;
     -webkit-touch-callout: none;
+    overflow: hidden;
   }
-  #relative { overflow: hidden; }
-  .bg-img { background-image: url("sky.png"); }
-  .heart { background: url("heart.png") center/contain no-repeat; }
-  @media (max-height: 600px) { header { height: 50px !important; } }
+  #relative { 
+    overflow: hidden;
+  }
+  .bg-img { 
+    background-image: url("sky.png"); 
+  }
+  .heart { 
+    background: url("heart.png") center/contain no-repeat; 
+  }
+  @media (max-height: 600px) { 
+    header { 
+      height: 50px !important; 
+    } 
+  }
 </style>
 </head>
 <body class="bg-img flex flex-col w-full h-screen">
